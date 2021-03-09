@@ -1,0 +1,68 @@
+%
+% todo
+%
+\DeclareRobustCommand{\steve}[1]{\todo[fancyline,color=green!40,size=\scriptsize]{\textsf{S: #1}}\xspace}
+\DeclareRobustCommand{\kathryn}[1]{\todo[fancyline,color=red!20,size=\scriptsize]{\textsf{K:#1}}\xspace}
+
+% switch these around so the no-op ones are used before submitting
+\newcommand{\pending}[1]{\textcolor{red}{#1\xspace}}
+\newcommand{\checked}[1]{\textcolor{green}{#1\xspace}}
+%\newcommand{\pending}[1]{#1\xspace}
+%\newcommand{\checked}[1]{#1\xspace}
+
+%
+% benchmarks
+%
+\newcommand*{\textbm}[1]{\textsf{#1}}
+
+\newcommand{\specjvm}{\textbm{SPECjvm}\xspace}
+\newcommand{\jess}{\textbm{jess}\xspace}
+\newcommand{\raytrace}{\textbm{raytrace}\xspace}
+\newcommand{\db}{\textbm{db}\xspace}
+\newcommand{\javac}{\textbm{javac}\xspace}
+\newcommand{\jack}{\textbm{jack}\xspace}
+\newcommand{\compress}{\textbm{compress}\xspace}
+\newcommand{\mpegaudio}{\textbm{mpegaudio}\xspace}
+\newcommand{\mtrt}{\textbm{mtrt}\xspace}
+\newcommand{\jbb}{\textbm{jbb2000}\xspace}
+\newcommand{\specjbb}{\textbm{SPECjbb2000}\xspace}
+\newcommand{\newspecjbb}{\textbm{SPECjbb2005}\xspace}
+\newcommand{\psjbb}{\textbm{pseudojbb}\xspace}
+\newcommand{\pjbb}{\textbm{pjbb2005}\xspace}
+\newcommand{\dacapo}{\textbm{DaCapo}\xspace}
+\newcommand{\dacapover}{\textbm{DaCapo v.06-10-MR2}\xspace}
+\newcommand{\antlr}{\textbm{antlr}\xspace}
+\newcommand{\bloat}{\textbm{bloat}\xspace}
+\newcommand{\eclipse}{\textbm{eclipse}\xspace}
+\newcommand{\fop}{\textbm{fop}\xspace}
+\newcommand{\hsqldb}{\textbm{hsqldb}\xspace}
+\newcommand{\jython}{\textbm{jython}\xspace}
+\newcommand{\pmd}{\textbm{pmd}\xspace}
+\newcommand{\xalan}{\textbm{xalan}\xspace}
+\newcommand{\chart}{\textbm{chart}\xspace}
+\newcommand{\luindex}{\textbm{luindex}\xspace}
+\newcommand{\lusearch}{\textbm{lusearch}\xspace}
+\newcommand{\lusearchfix}{\textbm{lusearch-fix}\xspace}
+\newcommand{\avrora}{\textbm{avrora}\xspace}
+\newcommand{\sunflow}{\textbm{sunflow}\xspace}
+
+%
+% Stuff for pretty printing the source code using listings.sty
+%
+
+\lstloadlanguages{java}
+\lstset{
+  numbers=left,
+  numberstyle=\tiny\sffamily,
+  stepnumber=1,
+  numbersep=1em,
+  language=java,                         % the language
+  basicstyle=\scriptsize\ttfamily,     % the basic font family to use
+  commentstyle=\scriptsize\it\ttfamily,% the font for comments
+  stringstyle=\ttfamily,
+  escapechar={\$},
+  morekeywords={Address, Word, Offset, Extent, ObjectReference}
+}
+
+% This command allows us to conviniently put java text inline.
+\DeclareRobustCommand{\textjava}[1]{{\lstset{basicstyle=\footnotesize\ttfamily}\lstinline@#1@}}

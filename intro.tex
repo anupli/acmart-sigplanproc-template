@@ -1,0 +1,70 @@
+\section{Introduction}
+
+Structure the introduction along the same lines as the abstract.
+Expand on the problem, contribution, result, and meaning in one or two
+paragraphs on each.
+
+% problem
+
+% contribution
+
+% result
+
+% meaning
+
+A few grammatical notes.  Elminate passive voice.  Passivity
+introduces ambiguity (Who is the actor?).  Ambiguity is occasionally a
+useful device, but as a rule it is the antithesis of effective
+scientific communication, so should be avoided.  Do not use a citation
+as a noun, always use it as a footnote.  For example, instead of
+``\cite{BH:04} measure barrier overheads.''  say ``\citeauthor{BH:04}
+measure barrier overheads~\cite{BH:04}.''  Do not use an unqualified
+``this'' as the noun of your sentence. For example, instead of ``This
+makes caches rock.''  say ``This locality of reference makes caches
+rock.''
+
+Some other points of style.  When writing numbers with units, you
+should insert a small space (\textjava{\\,}) between the number and
+the units.  For example, use `\textjava{2.8\\,GHz}', which renders as
+2.8\,GHz.  The space is there for correctness (see NIST standards on
+units), and the small space both typesets it nicely and ensures the
+unit does not wrap onto a different line from the number.
+
+The \textjava{todonotes} package provides nice
+\todo[fancyline,color=green,size=\footnotesize]{This is a test of
+  todonotes} tricks for adding todo items (\textjava{\\todo}) and
+notes to your draft document.  You can make macros with \kathryn{This
+  is a note from Kathryn.} color-coded notes from each of the authors.
+When you are ready to submit, you should silence them all with the
+\textjava{disable} package option.  Figure~\ref{fig:todo}
+shows\steve{Here's one from Steve.}  the package's
+\textjava{\\missingfigure} macro, which is a nice way to make
+place-holders.
+
+When there are numbers for checking before submit, you can use \pending{12456}
+to highlight the number. After you check the number, switch it to
+\checked{12456}. When you submit the paper, change the these two macros to submit
+version, then the color will disappear.
+
+\begin{figure}
+  \centering
+  \missingfigure{There's a figure missing here}
+  \caption{An example of a missing figure, using \textjava{todonotes}'
+    \textjava{\\missingfigure} macro.}
+  \label{fig:todo}
+\end{figure}
+
+There are good tools for automating the process of running latex.  I
+discourage you from using a Makefile.  If your editor does not do the
+job for you, you should probably use \textjava{latexmk}, which is
+bundled as part of the standard texlive distribution.  There is an
+example configuration file provided in this directory.  Copy it into
+your home director with the name \textjava{.latexmkrc} (notice the
+dot).
+
+Gratuitous citation to generate a few bib entries \cite{BH:04,SBF:12,YBFH:12}.
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "paper"
+%%% End:

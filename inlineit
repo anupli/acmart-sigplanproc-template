@@ -1,0 +1,45 @@
+#!/usr/bin/perl
+
+$mainfile = shift(@ARGV);
+$output =  shift(@ARGV);
+
+if ($mainfile eq "" || $output eq "" || ($mainfile =~ /.tex/) || (!$output =~ /.tex/)) {
+    print("usage: inlineit <main> <inlined.tex>\n  e.g. inlineit paper p101-blackburn.tex\n\nNOTE: This comes with no guarantee of correctness---please\n      check the output carefully.\n"); exit(0);
+}
+
+open (OUT, ">$output");
+inline($mainfile);
+print "\n";
+close OUT;
+
+exit(0);
+sub inline {
+    my ($inlinefile) = @_;
+    my ($IN, $thisline, $restofline);
+    if (!(($inlinefile =~ /.tex/) || ($inlinefile =~ /.bbl/) || ($inlinefile =~ /.sty/))) {
+	$inlinefile .= ".tex";
+    }
+    print "$inlinefile ";
+    die "Could not open $inlinefile" unless (open($IN, "<$inlinefile"));
+    while (<$IN>) {
+	if (/^\s*\\input\{.+\}/) {
+	    ($input,$restofline) = /\\input\{([^\}]+)\}\s*(.*)/;
+#	    print "->$input<-";
+	    inline($input);
+	    print OUT $restofline;
+	} elsif (/^\s*\\input\s+[^\\]+/) {
+	    ($input,$restofline) = /\\input\s+([^\\\s]+)\s*(.*)/;
+#	    print "=>$input<=";
+	    inline($input);
+	    print OUT $restofline;
+	} elsif (/^\\bibliography/) {
+	} elsif (/\\end\{document\}/) {
+	    $thisline = $_;
+	    inline($mainfile.".bbl");
+	    print OUT $thisline;
+	} else {
+	    print OUT $_;
+	}
+    }
+    close $IN;
+}

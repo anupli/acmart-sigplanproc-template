@@ -1,0 +1,24 @@
+\section{Analysis}
+\label{sec:analysis}
+
+
+
+\begin{figure}
+  \centering
+  \subfloat[Read\label{fig:codea}]{\lstinputlisting{code/read.java}}\\
+  \subfloat[Write\label{fig:codeb}]{\lstinputlisting{code/write.java}}
+  \caption{An example of including source code, and using subfigures.}
+  \label{fig:code}
+\end{figure}
+
+Figure~\ref{fig:code} shows how to use the \textjava{listings} package
+to include source code in the document.  It also shows how to use
+\textjava{subfig} to generate subfloats.  You can reference a subfloat
+just like a float.  For example,
+Figure~\ref{fig:code}\subref{fig:codea} is an example of a read
+barrier.
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "paper"
+%%% End:

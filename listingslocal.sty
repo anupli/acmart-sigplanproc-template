@@ -1,0 +1,24 @@
+%
+%  Use this to customize pretty-printing of source code.   See the
+%  documentation for the listings package for information.
+%
+\usepackage{listings}  % for including source code in a document
+
+\makeatother
+\lstloadlanguages{java}
+\lstset{
+  numbers=left,
+  numberstyle=\tiny\sffamily,
+  stepnumber=1,
+  numbersep=1em,
+  language=java,                         % the language
+  basicstyle=\scriptsize\ttfamily,     % the basic font family to use
+  commentstyle=\itshape,                 % the font for comments
+  stringstyle=\ttfamily,
+%  morekeywords={@Intrinsic, @Unboxed, @RawStorage}
+}
+
+% This command allows us to conviniently put java text inline.
+\newcommand{\textjava}[1]{{\lstset{basicstyle=\footnotesize\ttfamily}\lstinline@#1@}}
+
+\makeatletter

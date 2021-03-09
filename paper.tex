@@ -57,9 +57,26 @@
 %% Some recommended packages.
 \usepackage{booktabs}   %% For formal tables:
                         %% http://ctan.org/pkg/booktabs
-\usepackage{subcaption} %% For complex figures with subfigures/subcaptions
+% \usepackage{subcaption} %% For complex figures with subfigures/subcaptions
                         %% http://ctan.org/pkg/subcaption
 
+%usepackage[disable]{todonotes} % add the "disable" package option when ready to submit
+\usepackage{todonotes} % add the "disable" package option when ready to submit, see above line.
+\usepackage{alltt}
+\usepackage{mathptmx}
+\usepackage{courier}
+\usepackage[scaled]{helvet} % see www.ctan.org/get/macros/latex/required/psnfss/psnfss2e.pdf
+\DeclareMathAlphabet{\mathsf}{OT1}{phv}{m}{n}
+\usepackage{siunitx}
+\usepackage{listings}
+\usepackage{multirow}
+\usepackage{subfig}
+\usepackage{cancel}
+\usepackage{xspace}
+\usepackage[inline]{enumitem}
+\usepackage{relsize}
+
+\input{macros}
 
 \begin{document}
 
@@ -135,9 +152,7 @@
 %% Abstract
 %% Note: \begin{abstract}...\end{abstract} environment must come
 %% before \maketitle command
-\begin{abstract}
-Text of abstract \ldots.
-\end{abstract}
+\input{abstract.tex}
 
 
 %% 2012 ACM Computing Classification System (CSS) concepts
@@ -174,10 +189,31 @@ Text of abstract \ldots.
 \maketitle
 
 
-\section{Introduction}
+\input{intro}
 
-Text of paper \ldots
+\input{related}
 
+\input{analysis}
+
+\input{methodology}
+
+\input{results}
+
+\input{conclusion}
+
+\input{conflicts}
+
+Cross refs are a nice way to keep the bibliography style consistent
+and clean, and also allows the drop-in replacement of different
+citation styles for conferences.  However, if you use this, you
+probably want to pass the option \textjava{-min-crossrefs=2000} to
+\textjava{bibtex} to avoid it generating entries for each of the
+crossreferenced fields (the default value is \textjava{2}, which means
+an entry for the venue will be generated if there are two or more
+citations that use that crossref).  If you use \textjava{latexmk} or
+any other such tool for running latex, you should set this option in
+your config file.  The \textjava{latexmkrc} file provided with this
+example does that.
 
 %% Acknowledgments
 \begin{acks}                            %% acks environment is optional
@@ -198,7 +234,7 @@ Text of paper \ldots
 
 
 %% Bibliography
-%\bibliography{bibfile}
+\bibliography{paper}
 
 
 %% Appendix
